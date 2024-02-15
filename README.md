@@ -2,9 +2,9 @@
 
 |[Markdown](#markdown-id)|[Git](#git-id)|
 |:----------------------:|:------------:|
-|[Paragraphs and line breaks](#markdown-plb-id)|
-|[Emphasis](#markdown-emph-id)|
-|[Headings](#markdown-head-id)|
+|[Paragraphs and line breaks](#markdown-plb-id)|[Навигация](#git-nav-id)|
+|[Emphasis](#markdown-emph-id)|[Работа с файлами и папками](#git-file-id)|
+|[Headings](#markdown-head-id)|[Полезные возможности](#git-trck-id)|
 |[Horizontal rules](#markdown-hor-id)|
 |[Blockquotes](#markdown-quot-id)|
 |[Lists](#markdown-lst-id)|
@@ -756,6 +756,48 @@ ___
 ___
 <h1 id="git-id">Шпаргалка Git</h1>
 
+<h2 id="git-nav-id">Навигация</h2>
+
+- `pwd` (от англ. *print working directory*, «показать рабочую папку») — покажи, в какой я папке;
+- `ls` (от англ. *list directory contents*, «отобразить содержимое директории») — покажи файлы и папки в текущей папке;
+- `ls -a` — покажи также скрытые файлы и папки, названия которых начинаются с символа `.`;
+- `ls -l` — выдавать (в одноколоночном формате) тип файла, права доступа к файлу, количество ссылок на файл, имя владельца, имя группы, размер файла (в байтах), временной штамп и имя файла;
+- `ls -la` — `-l`+`-a`
+- `cd first-project` (от англ. *change directory*, «сменить директорию») — перейди в папку `first-project`;
+- `cd first-project/html` — перейди в папку `html`, которая находится в папке `first-project`;
+- `cd ..` — перейди на уровень выше, в родительскую папку;
+- `cd ~` — перейди в домашнюю директорию (`/Users/Username`);
+- `cd /` — перейди в корневую директорию.
+
+<h2 id="git-file-id">Работа с файлами и папками</h2>
+
+### Создание
+
+- `touch index.html` (англ. *touch*, «коснуться») — создай файл `index.html` в текущей папке;
+- `touch index.html style.css script.js` — если нужно создать сразу несколько файлов, можно напечатать их имена в одну строку через пробел;
+- `mkdir second-project` (от англ. *make directory*, «создать директорию») — создай папку с именем `second-project` в текущей папке.
+
+### Копирование и перемещение
+
+- `cp file.txt ~/my-dir` (от англ. *copy*, «копировать») — скопируй файл в другое место;
+- `mv file.txt ~/my-dir` (от англ. *move*, «переместить») — перемести файл или папку в другое место.
+
+### Чтение
+
+- `cat file.txt` (от англ. *concatenate and print*, «объединить и распечатать») — распечатай содержимое текстового файла `file.txt`.
+
+### Удаление
+
+- `rm about.html` (от англ. *remove*, «удалить») — удали файл `about.html`;
+- `rmdir images` (от англ. *remove directory*, «удалить директорию») — удали папку `images`;
+- `rm -r second-project` (от англ. *remove*, «удалить» + *recursive*, «рекурсивный») — удали папку `second-project` и всё, что она содержит.
+
+<h2 id="git-trck-id">Полезные возможности</h2>
+
+- Команды необязательно печатать и выполнять по очереди. Можно указать их списком — разделить двумя амперсандами (`&&`).
+- У консоли есть собственная память — буфер с несколькими последними командами. По ним можно перемещаться с помощью клавиш со стрелками вверх (`↑`) и вниз (`↓`).
+- Чтобы не вводить название файла или папки полностью, можно набрать первые символы имени и дважды нажать `Tab`. Если файл или папка есть в текущей директории, командная строка допишет путь сама.
+
 ___
 <h1 id="python-id">The Zen of Python</h1>
 
@@ -767,6 +809,12 @@ ___
 </details>
 
 ## PyCharm Shortcuts
+
+
+
+
+
+
 
 [GitHubMCSRef]: https://gist.github.com/fomvasss/8dd8cd7f88c67a4e3727f9d39224a84c "GitHub"
 [MCSRef]: https://www.markdownguide.org/cheat-sheet/ "Markdown"
