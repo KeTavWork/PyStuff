@@ -1,4 +1,14 @@
-# Шпаргалка markdown
+# TITLE 
+
+[Python](#python-id)
+
+<a href="#python-id">Python</a>
+
+|Markdown|Python|**Git**|**Browser**|
+|:----------------------:|:----:|:---:|:---:|
+|			 |	|     |     |
+
+# Шпаргалка markdown {#markdown-id}
 
 [Шпаргалка по Markdown][GitHubMCSRef] | [Markdown Cheat Sheet][MCSRef]
 
@@ -156,6 +166,24 @@ ___Текст жирным курсивом___
 -
 Заголовок второго уровня
 ----------
+
+</details>
+
+### Heading IDs
+
+Many Markdown processors support custom IDs for headings — some Markdown processors automatically add them. Adding custom IDs allows you to link directly to headings and modify them with CSS. To add a custom heading ID, enclose the custom ID in curly braces on the same line as the heading.
+
+<details>
+<summary>Spoiler</summary>
+
+Markdown:
+```
+### My Great Heading {#custom-id}
+```
+HTML:
+```
+<h3 id="custom-id">My Great Heading</h3>
+```
 
 </details>
 
@@ -434,6 +462,24 @@ Markdown относит к разным спискам пункты, перед 
 
 </details>
 
+### Linking to Heading IDs
+
+You can link to headings with custom IDs in the file by creating a standard link with a number sign (#) followed by the custom heading ID. These are commonly referred to as anchor links.
+
+<details>
+<summary>Spoiler</summary>
+
+Markdown:
+```
+[Heading IDs](#heading-ids)
+```
+HTML:
+```
+<a href="#heading-ids">Heading IDs</a>
+```
+
+</details>
+
 ## Картинки (images)
 
 Изображения в Markdown оформляются по принципу, схожему с принципом оформления ссылкок, только перед квадратными скобками нужно поставить восклицательный знак: `![текст](путь к изображению)`. Здесь также можно сделать всплывающую подсказку.
@@ -595,6 +641,8 @@ console.log(x + y);
 
 </details>
 
+Creating tables with hyphens and pipes can be tedious. To speed up the process, try using the [Markdown Tables Generator][MTGRef] or [AnyWayData Markdown Export][AWDMEFer]. Build a table using the graphical interface, and then copy the generated Markdown-formatted text into your file.
+
 ## Экранирование (escaping characters) - `\`
 
 **Список символов, которые нужно экранировать: \[`\`, ``` ` ```, `*`, `_`, `{`, `}`, `[`, `]`, `<`, `>`, `(`, `)`, `#`, `+`, `-`, `.`, `!`, ` `, `|`\]**
@@ -626,7 +674,7 @@ ___
 *Это лишь некоторые функции markdown.*
 ___
 
-# The Zen of Python
+# The Zen of Python {#python-id}
 
 <details>
 <summary>Image</summary>
@@ -640,3 +688,5 @@ ___
 [MCSRef]: https://www.markdownguide.org/cheat-sheet/ "Markdown"
 [linguistRef]: https://github.com/github-linguist/linguist/blob/master/lib/linguist/languages.yml
 [zenPyImg]: https://github.com/KeTavWork/PyStuff/blob/master/zenPy.png
+[MTGRef]: https://www.tablesgenerator.com/markdown_tables
+[AWDMEFer]: https://anywaydata.com/
