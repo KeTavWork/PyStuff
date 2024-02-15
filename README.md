@@ -8,7 +8,7 @@
 |:----------------------:|:----:|:---:|:---:|
 |			 |	|     |     |
 
-# Шпаргалка markdown {#markdown-id}
+# Шпаргалка markdown
 
 [Шпаргалка по Markdown][GitHubMCSRef] | [Markdown Cheat Sheet][MCSRef]
 
@@ -674,7 +674,9 @@ ___
 *Это лишь некоторые функции markdown.*
 ___
 
-# The Zen of Python {#python-id}
+<!-- # The Zen of Python {#python-id} -->
+<!-- <h1 id="python-id">The Zen of Python</h1> -->
+<a name="python-id"><h1>The Zen of Python</h1></a>
 
 <details>
 <summary>Image</summary>
