@@ -1,14 +1,25 @@
 # TITLE
 
-|[Markdown](#markdown-id)|[Python](#python-id)|Git|Browser|
-|:----------------------:|:----:|:---:|:---:|
-|			 |	|     |     |
+|[Markdown](#markdown-id)|[Browser](#browser-id)|[Git](#git-id)|[Python](#python-id)|
+|:----------------------:|:------------------:|:------------:|:--------------------:|
+|[Paragraphs and line breaks](#markdown-plb-id)|
+|[Emphasis](#markdown-emph-id)|
+|[Headings](#markdown-head-id)|
+|[Horizontal rules](#markdown-hor-id)|
+|[Blockquotes](#markdown-quot-id)|
+|[Lists](#markdown-lst-id)|
+|[Links](#markdown-link-id)|
+|[Images](#markdown-img-id)|
+|[Code](#markdown-code-id)|
+|[Tables](#markdown-tbl-id)|
+|[Escaping characters](#markdown-esc-id)|
+|[Spoilers](#markdown-splr-id)|
 
 <h1 id="markdown-id">Шпаргалка markdown</h1>
 
 [Шпаргалка по Markdown][GitHubMCSRef] | [Markdown Cheat Sheet][MCSRef]
 
-## Параграфы и разрывы строк (paragraphs and line breaks)
+<h2 id="markdown-plb-id">Параграфы и разрывы строк (paragraphs and line breaks)</h2>
 
 Чтобы поделить текст на параграфы, между ними нужно оставить пустую строку. Строка считается пустой, даже если в ней есть пробелы и табуляции. Если же строки находятся рядом, то они автоматически склеиваются в одну.\
 Для переноса строки внутри одного параграфа есть три метода:
@@ -30,9 +41,9 @@
 
 </details>
 
-## Выделение текста (emphasis)
+<h2 id="markdown-emph-id">Выделение текста (emphasis)</h2>
 
-### Курсив (italic) - `*` | `_`
+### *Курсив (italic)* - `*` | `_`
 
 <details>
 <summary>Spoiler</summary>
@@ -48,7 +59,7 @@ _Текст курсивом_
 
 </details>
 
-### Жирный (bold) - `**` | `__`
+### **Жирный (bold)** - `**` | `__`
 
 <details>
 <summary>Spoiler</summary>
@@ -64,7 +75,7 @@ __Жирный текст__
 
 </details>
 
-### Жирный курсив (bold and italic)  - `***` | `___`
+### ***Жирный курсив (bold and italic)***  - `***` | `___`
 
 <details>
 <summary>Spoiler</summary>
@@ -96,7 +107,7 @@ ___Текст жирным курсивом___
 
 </details>
 
-### Зачёркнутый (strikethrough) - `~~`
+### ~Зачёркнутый (strikethrough)~ - `~~`
 
 Такая опция есть только в диалекте GitHub Flavored Markdown.
 
@@ -110,7 +121,7 @@ ___Текст жирным курсивом___
 
 </details>
 
-## Заголовки (headings)
+<h2 id="markdown-head-id">Заголовки (headings)</h2>
 
 Заголовки можно создавать с помощью символа `#`. Чем больше `#`, тем меньше заголовок: от H1 до H6.
 
@@ -168,7 +179,7 @@ ___Текст жирным курсивом___
 ### Heading IDs
 
 Many Markdown processors support custom IDs for headings — some Markdown processors automatically add them. Adding custom IDs allows you to link directly to headings and modify them with CSS. To add a custom heading ID, enclose the custom ID in curly braces on the same line as the heading.\
-**WORK ONLY HTML, IDK**
+***WORK ONLY HTML, IDK***
 
 <details>
 <summary>Spoiler</summary>
@@ -186,7 +197,7 @@ HTML:
 
 </details>
 
-## Разделители (horizontal rules)
+<h2 id="markdown-hor-id">Разделители (horizontal rules)</h2>
 
 Чтобы оформить горизонтальный разделитель, нужно поставить три или больше специальных символа: `*`, `-` или `_`. Они должны находиться на отдельной строке, и между ними можно ставить любое количество пробелов и табуляций.
 
@@ -208,7 +219,7 @@ __________________________
 
 </details>
 
-## Цитаты (blockquotes)
+<h2 id="markdown-quot-id">Цитаты (blockquotes)</h2>
 
 Чтобы параграф отобразился как цитата, нужно поставить перед ним `>`.
 
@@ -254,7 +265,7 @@ __________________________
 
 </details>
 
-## Списки (lists)
+<h2 id="markdown-lst-id">Списки (lists)</h2>
 
 ### Нумерованные (ordered)
 
@@ -413,7 +424,7 @@ Markdown относит к разным спискам пункты, перед 
 
 </details>
 
-## Ссылки (links)
+<h2 id="markdown-link-id">Ссылки (links)</h2>
 
 Самый лёгкий способ поместить ссылку в Markdown — заключить её в `<>`. Несмотря на простоту, он не является основным и был добавлен только в спецификации CommonMark.
 
@@ -479,7 +490,7 @@ HTML:
 
 </details>
 
-## Картинки (images)
+<h2 id="markdown-img-id">Картинки (images)</h2>
 
 Изображения в Markdown оформляются по принципу, схожему с принципом оформления ссылкок, только перед квадратными скобками нужно поставить восклицательный знак: `![текст](путь к изображению)`. Здесь также можно сделать всплывающую подсказку.
 
@@ -507,7 +518,7 @@ HTML:
 
 </details>
 
-## Вставка кода (code)
+<h2 id="markdown-code-id">Вставка кода (code)</h2>
 
 В Markdown есть несколько способов выделить исходный код:
 1. Если надо отобразить фрагмент кода внутри строки с каким-то текстом, нужно с двух сторон выделить этот код одним или несколькими обратными апострофами (``` ` ```; их ещё называют бэктиками).
@@ -545,6 +556,12 @@ int main() {
 	let x = 12;
 	let y = 6;
 	console.log(x + y);
+
+HTML:
+```
+<code>`</code>
+```
+<code>`</code>
 
 </details>
 
@@ -602,7 +619,7 @@ console.log(x + y);
 
 [Список языков, поддерживаех диалектом GitHub Flavored Markdown][linguistRef]
 
-## Таблицы (tables)
+<h2 id="markdown-tbl-id">Таблицы (tables)</h2>
 
 В диалекте GitHub Flavored Markdown есть возможность оформлять таблицы. Столбцы разделяются `|`, а строка с шапкой отделяется от остальных `-`, которых можно ставить сколько угодно.
 
@@ -642,11 +659,11 @@ console.log(x + y);
 
 Creating tables with hyphens and pipes can be tedious. To speed up the process, try using the [Markdown Tables Generator][MTGRef] or [AnyWayData Markdown Export][AWDMEFer]. Build a table using the graphical interface, and then copy the generated Markdown-formatted text into your file.
 
-## Экранирование (escaping characters) - `\`
+<h2 id="markdown-esc-id">Экранирование (escaping characters) - <code>\</code></h2>
 
 **Список символов, которые нужно экранировать: \[`\`, ``` ` ```, `*`, `_`, `{`, `}`, `[`, `]`, `<`, `>`, `(`, `)`, `#`, `+`, `-`, `.`, `!`, ` `, `|`\]**
 
-## Spoilers
+<h2 id="markdown-splr-id">Spoilers</h2>
 
 <details>
 <summary>Spoiler</summary>
