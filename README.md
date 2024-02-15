@@ -675,8 +675,8 @@ ___
 ___
 
 <!-- # The Zen of Python {#python-id} -->
-<!-- <h1 id="python-id">The Zen of Python</h1> -->
-<a name="python-id"><h1>The Zen of Python</h1></a>
+<h1 id="python-id">The Zen of Python</h1>
+<!-- <a name="python-id"><h1>The Zen of Python</h1></a> -->
 
 <details>
 <summary>Image</summary>
