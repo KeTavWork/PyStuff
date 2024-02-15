@@ -1,14 +1,10 @@
-# TITLE 
+# TITLE
 
-[Python](#python-id)
-
-<a href="#python-id">Python</a>
-
-|Markdown|Python|**Git**|**Browser**|
+|[Markdown](#markdown-id)|[Python](#python-id)|Git|Browser|
 |:----------------------:|:----:|:---:|:---:|
 |			 |	|     |     |
 
-# Шпаргалка markdown
+<h1 id="markdown-id">Шпаргалка markdown</h1>
 
 [Шпаргалка по Markdown][GitHubMCSRef] | [Markdown Cheat Sheet][MCSRef]
 
@@ -171,7 +167,8 @@ ___Текст жирным курсивом___
 
 ### Heading IDs
 
-Many Markdown processors support custom IDs for headings — some Markdown processors automatically add them. Adding custom IDs allows you to link directly to headings and modify them with CSS. To add a custom heading ID, enclose the custom ID in curly braces on the same line as the heading.
+Many Markdown processors support custom IDs for headings — some Markdown processors automatically add them. Adding custom IDs allows you to link directly to headings and modify them with CSS. To add a custom heading ID, enclose the custom ID in curly braces on the same line as the heading.\
+**WORK ONLY HTML, IDK**
 
 <details>
 <summary>Spoiler</summary>
@@ -183,6 +180,8 @@ Markdown:
 HTML:
 ```
 <h3 id="custom-id">My Great Heading</h3>
+
+<a name="headers"><h2>Заголовки</h2></a>
 ```
 
 </details>
@@ -674,9 +673,7 @@ ___
 *Это лишь некоторые функции markdown.*
 ___
 
-<!-- # The Zen of Python {#python-id} -->
 <h1 id="python-id">The Zen of Python</h1>
-<!-- <a name="python-id"><h1>The Zen of Python</h1></a> -->
 
 <details>
 <summary>Image</summary>
