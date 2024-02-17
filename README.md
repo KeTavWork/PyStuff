@@ -14,6 +14,7 @@
 |[Tables](#markdown-tbl-id)|[Хеш](#git-hash-id)|
 |[Escaping characters](#markdown-esc-id)|[HEAD](#git-head-id)|
 |[Spoilers](#markdown-splr-id)|[Сообщения к коммитам](#git-msg-id)|
+|[Mermaid](#markdown-mrmd-id)|[Статусы файлов в Git](#git-stat-id)|
 
 |[Browser](#browser-id)|[Python](#python-id)|
 |:--------------------:|:------------------:|
@@ -680,12 +681,309 @@ Creating tables with hyphens and pipes can be tedious. To speed up the process, 
 </details>
 ```
 
-<details>
-  <summary>Spoiler</summary>
+  <details>
+    <summary>Spoiler</summary>
   
     <!-- Markdown content here -->
   
   </details>
+
+</details>
+
+<h2 id="markdown-mrmd-id">Mermaid</h2>
+
+Чтобы получить `mermaid`-схему в `README.md`, нужно добавить блок кода типа `mermaid`. Два символа `%%` обозначают в `mermaid` строку-комментарий.
+
+***[Mermaid website][mermaidRef]***
+
+### Flowcharts
+
+<details>
+<summary><h4>A node with text</h4></summary>
+
+```md
+```mermaid
+---
+title: Node with text
+---
+flowchart LR
+    id1[This is the text in the box]
+\```
+```
+
+```mermaid
+---
+title: Node with text
+---
+flowchart LR
+    id1[This is the text in the box]
+```
+
+</details>
+
+
+<details>
+<summary><h4>Direction</h4></summary>
+
+Possible FlowChart orientations are:
+- TB - Top to bottom
+- TD - Top-down/ same as top to bottom
+- BT - Bottom to top
+- RL - Right to left
+- LR - Left to right
+
+```md
+```mermaid
+flowchart TD
+    Start --> Stop
+\```
+```
+
+```mermaid
+flowchart TD
+    Start --> Stop
+```
+
+</details>
+
+<details>
+<summary><h4>A link with arrow head and text</h4></summary>
+
+```md
+```mermaid
+flowchart LR
+    A-->|text|B
+\```
+```
+
+```mermaid
+flowchart LR
+    A-->|text|B
+```
+
+</details>
+
+<details>
+<summary><h4>Example</h4></summary>
+
+```md
+```mermaid
+flowchart LR
+    untr[untracked]
+    st[staged]
+    cm[comitted]
+    untr-->|git add|st
+    st-->|???|cm
+\```
+```
+
+```mermaid
+flowchart LR
+    untr[untracked]
+    st[staged]
+    cm[comitted]
+    untr-->|git add|st
+    st-->|???|cm
+```
+
+</details>
+
+### Gitgraph Diagrams
+
+<details>
+<summary><h4>Basic</h4></summary>
+
+In Mermaid, we support the basic git operations like:
+- _commit_ : Representing a new commit on the current branch.
+- _branch_ : To create & switch to a new branch, setting it as the current branch.
+- _checkout_ : To checking out an existing branch and setting it as the current branch.
+- _merge_ : To merge an existing branch onto the current branch.
+
+```md
+```mermaid
+---
+title: Example Git diagram
+---
+gitGraph
+   commit
+   commit
+   branch develop
+   checkout develop
+   commit
+   commit
+   checkout main
+   merge develop
+   commit
+   commit
+\```
+```
+
+```mermaid
+---
+title: Example Git diagram
+---
+gitGraph
+   commit
+   commit
+   branch develop
+   checkout develop
+   commit
+   commit
+   checkout main
+   merge develop
+   commit
+   commit
+```
+
+</details>
+
+<details>
+<summary><h4>Customizing main branch name</h4></summary>
+
+You can do this by using the `mainBranchName` keyword. By default its value is `main`. You can set it to any string using directives.
+
+```md
+```mermaid
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'untracked'}} }%%
+    gitGraph
+\```
+```
+
+```mermaid
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'untracked'}} }%%
+    gitGraph
+```
+
+</details>
+
+<details>
+<summary><h4>Themes</h4></summary>
+
+The following are the different pre-defined theme options:
+- `base`
+- `forest`
+- `dark`
+- `default`
+- `neutral`
+
+```md
+```mermaid
+%%{init: { 'logLevel': 'debug', 'theme': 'dark' } }%%
+      gitGraph
+\```
+```
+
+```mermaid
+%%{init: { 'logLevel': 'debug', 'theme': 'dark' } }%%
+      gitGraph
+```
+
+</details>
+
+<details>
+<summary><h4>Adding custom commit id</h4></summary>
+
+For a given commit you may specify a custom ID at the time of declaring it using the `id` attribute, followed by `:` and your custom value within a `""` quote. For example: `commit id: "your_custom_id"`
+
+```md
+```mermaid
+gitGraph
+       commit id: "Alpha"
+       commit id: "Beta"
+       commit id: "Gamma"
+\```
+```
+
+```mermaid
+gitGraph
+       commit id: "Alpha"
+       commit id: "Beta"
+       commit id: "Gamma"
+```
+
+</details>
+
+<details>
+<summary><h4>Modifying commit type</h4></summary>
+
+In Mermaid, a commit can be of three type, which render a bit different in the diagram. These types are:
+- `NORMAL` : Default commit type. Represented by a solid circle in the diagram
+- `REVERSE` : To emphasize a commit as a reverse commit. Represented by a crossed solid circle in the diagram.
+- `HIGHLIGHT` : To highlight a particular commit in the diagram. Represented by a filled rectangle in the diagram.
+
+For a given commit you may specify its type at the time of declaring it using the `type` attribute, followed by `:` and the required type option discussed above. For example: `commit type: HIGHLIGHT`\
+NOTE: If no commit type is specified, `NORMAL` is picked as default.
+
+```md
+```mermaid
+gitGraph
+       commit id: "Normal"
+       commit
+       commit id: "Reverse" type: REVERSE
+       commit
+       commit id: "Highlight" type: HIGHLIGHT
+       commit
+\```
+```
+
+```mermaid
+gitGraph
+       commit id: "Normal"
+       commit
+       commit id: "Reverse" type: REVERSE
+       commit
+       commit id: "Highlight" type: HIGHLIGHT
+       commit
+```
+
+</details>
+
+<details>
+<summary><h4>Adding Tags</h4></summary>
+
+For a given commit you may decorate it as a **tag**, similar to the concept of tags or release version in git world. You can attach a custom tag at the time of declaring a commit using the `tag` attribute, followed by `:` and your custom value within `""` quote. For example: `commit tag: "your_custom_tag"`
+
+```md
+```mermaid
+gitGraph
+       commit
+       commit id: "Normal" tag: "v1.0.0"
+       commit
+       commit id: "Reverse" type: REVERSE tag: "RC_1"
+       commit
+       commit id: "Highlight" type: HIGHLIGHT tag: "8.8.4"
+       commit
+\```
+```
+
+```mermaid
+gitGraph
+       commit
+       commit id: "Normal" tag: "v1.0.0"
+       commit
+       commit id: "Reverse" type: REVERSE tag: "RC_1"
+       commit
+       commit id: "Highlight" type: HIGHLIGHT tag: "8.8.4"
+       commit
+```
+
+</details>
+
+<details>
+<summary><h3>Mermaid pipeline</h3></summary>
+
+```mermaid
+sequenceDiagram
+    participant dotcom
+    participant iframe
+    participant viewscreen
+    dotcom->>iframe: loads html w/ iframe url
+    iframe->>viewscreen: request template
+    viewscreen->>iframe: html & javascript
+    iframe->>dotcom: iframe ready
+    dotcom->>iframe: set mermaid data on iframe
+    iframe->>iframe: render mermaid
+```
 
 </details>
 
@@ -1073,7 +1371,70 @@ $ git commit -m "Close #334, добавить график температур�
 > > 
 > > Например: `Use library mega_lib_300`, `Fix exit button` и так далее.
 
+<h2 id="git-stat-id">Статусы файлов в Git</h2>
 
+### Статусы `untracked`/`tracked`, `staged` и `modified`
+
+Одна из ключевых задач Git — отслеживать изменения файлов в репозитории. Для этого каждый файл помечается каким-либо статусом.
+- `untracked` (англ. «неотслеживаемый»)\
+  Новые файлы в Git-репозитории помечаются как `untracked`, то есть неотслеживаемые. Git «видит», что такой файл существует, но не следит за изменениями в нём. У `untracked`-файла нет предыдущих версий, зафиксированных в коммитах или через команду `git add`.
+- `staged` (англ. «подготовленный»)\
+  После выполнения команды `git add` файл попадает в **staging area** (от англ. _stage_ — «сцена», «этап \[процесса\]» и _area_ — «область»), то есть в список файлов, которые войдут в коммит. В этот момент файл находится в состоянии `staged`.
+  > #### Staging area, index и cache
+  >
+  > > Staging area также называют **index** (англ. «каталог») или **cache** (англ. «кеш»), а состояние файла `staged` иногда называют `indexed` или `cached`.
+- `tracked` (англ. «отслеживаемый»)\
+  Состояние `tracked` — это противоположность `untracked`. Оно довольно широкое по смыслу: в него попадают файлы, которые уже были зафиксированы с помощью `git commit`, а также файлы, которые были добавлены в staging area командой `git add`. То есть все файлы, в которых Git так или иначе отслеживает изменения.
+- `modified` (англ. «изменённый»)\
+  Состояние `modified` означает, что Git сравнил содержимое файла с последней сохранённой версией и нашёл отличия. Например, файл был закоммичен и после этого изменён.
+
+> Для файлов в состояниях `staged` и `modified` обычно не указывают, что они также `tracked`, потому что это состояние подразумевается.
+
+### Про `staged` и `modified`
+
+Команда `git add` добавляет в staging area только текущее содержимое файла. Если вы, например, сделаете `git add file.txt`, а затем измените `file.txt`, то новое содержимое файла не будет находиться в staging.
+
+Git сообщит об этом с помощью статуса `modified`: файл изменён относительно той версии, которая уже в staging. Чтобы добавить в staging последнюю версию, нужно выполнить `git add file.txt` ещё раз.
+
+### Типичный жизненный цикл файла в Git
+
+```mermaid
+%%{init: { 'logLevel': 'debug', 'theme': 'dark', 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'untracked'}} }%%
+    gitGraph
+        commit id: "touch file.txt" tag: "file.txt"
+        branch staged
+        commit id: "git add file.txt" tag: "file.txt"
+        branch modified
+        commit id: "vim file.txt" tag: "file.txt"
+        checkout staged
+        commit id: " " type: REVERSE tag: "file.txt"
+        merge modified
+        commit id: "git add file.txt " tag: "file.txt"
+        branch tracked
+        commit id: "git commit" tag: "file.txt"
+        checkout modified
+        commit id: "  " type: HIGHLIGHT
+        merge tracked
+        commit id: "vim file.txt " tag: "file.txt"
+        checkout staged
+        commit id: "    " type: HIGHLIGHT
+        merge modified
+        commit id: "git add file.txt  " tag: "file.txt"
+        checkout tracked
+        commit id: "   " type: HIGHLIGHT
+        merge staged
+        commit id: "git commit " tag: "file.txt"
+```
+
+1. Файл только что создали. Git ещё не отслеживает содержимое этого файла. Состояние: `untracked`.
+1. Файл добавили в staging area с помощью `git add`. Состояние: `staged` (+ `tracked`).
+   - Возможно, изменили файл ещё раз. Состояния: `staged`, `modified` (+ `tracked`).\
+     `staged` и `modified` у одного файла, но у разных его версий.
+   - Ещё раз выполнили `git add`. Состояние: `staged` (+ `tracked`).
+1. Сделали коммит с помощью `git commit`. Состояние: `tracked`.
+2. Изменили файл. Состояние: `modified` (+ `tracked`).
+3. Снова добавили в staging area с помощью `git add`. Состояния: `staged` (+ `tracked`).
+4. Сделали коммит. Состояния: `tracked`.
 
 ____________________________________________________________________________________________________________________________________________________________
 <h1 id="python-id">The Zen of Python</h1>
@@ -1105,3 +1466,4 @@ ________________________________________________________________________________
 [AngCRef]: https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines
 [gtfRef]: https://git-scm.com/docs/git-interpret-trailers
 [CCSpecRef]: https://www.conventionalcommits.org/en/v1.0.0/#specification
+[mermaidRef]: http://mermaid.js.org/
