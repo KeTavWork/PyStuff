@@ -13,7 +13,7 @@
 |[Code](#markdown-code-id)|[Локальный и удалённый репозитории](#git-remo-id)|
 |[Tables](#markdown-tbl-id)|[Хеш](#git-hash-id)|
 |[Escaping characters](#markdown-esc-id)|[HEAD](#git-head-id)|
-|[Spoilers](#markdown-splr-id)|
+|[Spoilers](#markdown-splr-id)|[Сообщения к коммитам](#git-msg-id)|
 
 |[Browser](#browser-id)|[Python](#python-id)|
 |:--------------------:|:------------------:|
@@ -680,7 +680,7 @@ Creating tables with hyphens and pipes can be tedious. To speed up the process, 
 </details>
 ```
 
-  <details>
+<details>
   <summary>Spoiler</summary>
   
     <!-- Markdown content here -->
@@ -955,6 +955,126 @@ Git хранит таблицу соответствий `хеш → инфор�
 Когда вы делаете коммит, Git обновляет `refs/heads/master` — записывает в него хеш последнего коммита. Получается, что `HEAD` тоже обновляется, так как ссылается на `refs/heads/master`.\
 Если нужно передать последний коммит, то вместо его хеша можно просто написать слово `HEAD` — Git поймёт, что вы имели в виду последний коммит.
 
+<h2 id="git-msg-id">Сообщения к коммитам</h2>
+
+В выводе команды `git log --oneline` умещается максимум 72 первых символа сообщения, поэтому многие правила включают пункт: «Сообщение не должно быть длиннее 72 символов».\
+Общие рекомендации по тому, как правильно составить сообщение. Оно должно быть:
+- относительно коротким, чтобы его было легко прочитать;
+- информативным.
+
+### Корпоративный
+
+Во многих компаниях применяется Jira — система для организации проектов и задач. У каждой задачи в Jira есть идентификатор из нескольких заглавных латинских букв и номера. Например, `LGS-239` значит, что это **239**-я задача в проекте **LGS** (сокращение от англ. _**l**o**g**istic**s**_ — «логистика»).\
+В корпоративном стиле в начале сообщения обычно указывают Jira-ID, а после — текст сообщения.
+```bash
+$ git commit -m "LGS-239: Дополнить список пасхалок новыми числами"
+```
+
+### Conventional Commits
+
+#### Summary
+
+The Conventional Commits specification is a lightweight convention on top of commit messages. It provides an easy set of rules for creating an explicit commit history; which makes it easier to write automated tools on top of. This convention dovetails with [SemVer][SVRef], by describing the features, fixes, and breaking changes made in commit messages.\
+The commit message should be structured as follows:
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+The commit contains the following structural elements, to communicate intent to the consumers of your library:
+1. **fix:** a commit of the _type_ `fix` patches a bug in your codebase (this correlates with [`PATCH`][SVRef] in Semantic Versioning).
+1. **feat:** a commit of the _type_ `feat` introduces a new feature to the codebase (this correlates with [`MINOR`][SVRef] in Semantic Versioning).
+1. **BREAKING CHANGE:** a commit that has a footer `BREAKING CHANGE:`, or appends a `!` after the type/scope, introduces a breaking API change (correlating with [`MAJOR`][SVRef] in Semantic Versioning). A BREAKING CHANGE can be part of commits of any _type_.
+1. _types_ other than `fix:` and `feat:` are allowed, for example [@commitlint/config-conventional][commitlintCCRef] (based on the [Angular convention][AngCRef]) recommends `build:`, `chore:`, `ci:`, `docs:`, `style:`, `refactor:`, `perf:`, `test:`, and others.
+1. _footers_ other than `BREAKING CHANGE: <description>` may be provided and follow a convention similar to [git trailer format][gtfRef].
+
+Additional types are not mandated by the Conventional Commits specification, and have no implicit effect in Semantic Versioning (unless they include a BREAKING CHANGE). A scope may be provided to a commit’s type, to provide additional contextual information and is contained within parenthesis, e.g., `feat(parser): add ability to parse arrays`.
+
+<details>
+<summary><h4>Examples</h4></summary>
+  
+##### Commit message with description and breaking change footer
+
+```
+feat: allow provided config object to extend other configs
+
+BREAKING CHANGE: `extends` key in config file is now used for extending other config files
+```
+
+##### Commit message with `!` to draw attention to breaking change
+
+```
+feat!: send an email to the customer when a product is shipped
+```
+
+##### Commit message with scope and `!` to draw attention to breaking change
+
+```
+feat(api)!: send an email to the customer when a product is shipped
+```
+
+##### Commit message with both `!` and BREAKING CHANGE footer
+
+```
+chore!: drop support for Node 6
+
+BREAKING CHANGE: use JavaScript features not available in Node 6.
+```
+
+##### Commit message with no body
+
+```
+docs: correct spelling of CHANGELOG
+```
+
+##### Commit message with scope
+
+```
+feat(lang): add Polish language
+```
+
+##### Commit message with multi-paragraph body and multiple footers
+
+```
+fix: prevent racing of requests
+
+Introduce a request id and a reference to latest request. Dismiss
+incoming responses other than from latest request.
+
+Remove timeouts which were used to mitigate the racing issue but are
+obsolete now.
+
+Reviewed-by: Z
+Refs: #123
+```
+
+</details>
+
+#### [Specification][CCSpecRef]
+
+### GitHub-стиль
+
+GitHub можно использовать не только для хранения файлов проекта, но и для ведения списка **задач** (англ. _issue_) этого проекта. Если коммит «закрывает» или «решает» какую-то задачу, то в его сообщении удобно указывать ссылку на неё. Для этого в любом месте сообщения нужно указать `#<номер задачи>`. Например, вот так.
+```bash
+$ git commit -m "Исправить #334, добавить график температуры"
+
+$ git commit -m "Close #334, добавить график температуры"
+```
+
+> ### Инфинитив и императив
+> 
+> > Для сообщений на русском языке часто рекомендуют использовать инфинитивы.
+> > 
+> > Например: `Добавить тесты для PipkaService`, `Исправить ошибку #123` и так далее.
+>
+> > Для сообщений на английском рекомендуется использовать **повелительное наклонение** (англ. _imperative_).
+> > 
+> > Например: `Use library mega_lib_300`, `Fix exit button` и так далее.
+
+
+
 ____________________________________________________________________________________________________________________________________________________________
 <h1 id="python-id">The Zen of Python</h1>
 
@@ -980,3 +1100,8 @@ ________________________________________________________________________________
 [MTGRef]: https://www.tablesgenerator.com/markdown_tables
 [AWDMEFer]: https://anywaydata.com/
 [GitHubSSHVerifyRef]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints
+[SVRef]: https://semver.org/
+[commitlintCCRef]: https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional
+[AngCRef]: https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines
+[gtfRef]: https://git-scm.com/docs/git-interpret-trailers
+[CCSpecRef]: https://www.conventionalcommits.org/en/v1.0.0/#specification
