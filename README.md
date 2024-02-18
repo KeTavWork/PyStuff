@@ -1754,6 +1754,9 @@ For flowing long blocks of **text** with fewer structural restrictions
 | Show Quick-Fixes       |    `Alt`+`Enter`     |
 | Commit                 |     `Ctrl` + `K`     |
 | Commit and Push        | `Ctrl` + `Alt` + `K` |
+| Project                |     `Alt` + `1`      |
+| Git                    |     `Alt` + `9`      |
+| Commit                 |     `Alt` + `0`      |
 
 [GitHubMCSRef]: https://gist.github.com/fomvasss/8dd8cd7f88c67a4e3727f9d39224a84c "GitHub"
 [MCSRef]: https://www.markdownguide.org/cheat-sheet/ "Markdown"
