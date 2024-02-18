@@ -1753,7 +1753,12 @@ For flowing long blocks of **text** with fewer structural restrictions
 | Next Highlighted Error |         `F2`         |
 | Show Quick-Fixes       |    `Alt`+`Enter`     |
 | Commit                 |     `Ctrl` + `K`     |
+| Amend                  |     `Alt` + `M`      |
 | Commit and Push        | `Ctrl` + `Alt` + `K` |
+| Push                   |   `Ctrl` + `Enter`   |
+| Project                |     `Alt` + `1`      |
+| Git                    |     `Alt` + `9`      |
+| Commit                 |     `Alt` + `0`      |
 
 [GitHubMCSRef]: https://gist.github.com/fomvasss/8dd8cd7f88c67a4e3727f9d39224a84c "GitHub"
 [MCSRef]: https://www.markdownguide.org/cheat-sheet/ "Markdown"
