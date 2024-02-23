@@ -1841,7 +1841,7 @@ For flowing long blocks of **text** with fewer structural restrictions
 [GitHubMCSRef]: https://gist.github.com/fomvasss/8dd8cd7f88c67a4e3727f9d39224a84c "GitHub"
 [MCSRef]: https://www.markdownguide.org/cheat-sheet/ "Markdown"
 [linguistRef]: https://github.com/github-linguist/linguist/blob/master/lib/linguist/languages.yml
-[zenPyImg]: zenPy.png
+[zenPyImg]: images/zenPy.png
 [MTGRef]: https://www.tablesgenerator.com/markdown_tables
 [AWD-MEFer]: https://anywaydata.com/
 [GitHubSSHVerifyRef]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints
@@ -1851,4 +1851,4 @@ For flowing long blocks of **text** with fewer structural restrictions
 [gtfRef]: https://git-scm.com/docs/git-interpret-trailers
 [CCSpecRef]: https://www.conventionalcommits.org/en/v1.0.0/#specification
 [mermaidRef]: http://mermaid.js.org/
-[gitResetProcImg]: gitResetProc.png
+[gitResetProcImg]: images/gitResetProc.png
