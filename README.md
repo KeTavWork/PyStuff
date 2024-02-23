@@ -17,6 +17,7 @@
 |          [Mermaid](#markdown-mrmd-id)          |       [Статусы файлов в Git](#git-stat-id)        |
 |                                                |            [Исправления](#git-amen-id)            |
 |                                                |                [Vim](#git-vim-id)                 |
+|                                                |              [Откат](#git-reset-id)               |
 
 | [Browser](#browser-id) | [Python](#python-id) |
 |:----------------------:|:--------------------:|
@@ -1375,7 +1376,7 @@ $ git push -u origin main # Если команда приведёт к ошиб
 Информация о коммите — это набор данных: когда был сделан коммит, 
 содержимое файлов в репозитории на момент коммита и ссылка на предыдущий, 
 или **родительский** (англ. *parent*), коммит.\
-Git хеширует (преобразует) информацию о коммите с помощью алгоритма 
+Git хэширует (преобразует) информацию о коммите с помощью алгоритма 
 **SHA-1** (от англ. ***S**ecure **H**ash **A**lgorithm* — «безопасный 
 алгоритм хеширования») и получает для каждого
 коммита свой уникальный **хеш** — результат хеширования.\
@@ -1736,6 +1737,35 @@ a31fa24 Добавить главную страницу и стили
 
 **Используйте `:wq` для сохранения файла и выхода из Vim.**
 
+<h2 id="git-reset-id">Откат</h2>
+
+### Выполнить unstage изменений — `git restore --staged <file>`
+
+Команда `git restore --staged <file>` (от англ. _restore_ — «восстановить») 
+переведёт файл из `staged` обратно в `modified` или `untracked`.
+
+Чтобы «сбросить» все файлы из `staged` обратно в `untracked`/`modified`, можно 
+воспользоваться командой `git restore --staged .`: она сбросит всю текущую 
+папку (`.`).
+
+### «Откатить» коммит — `git reset --hard <commit hash>`
+
+Команда git reset --hard <commit hash> (от англ. _reset_ — «сброс», 
+«обнуление» и _hard_ — «суровый») «откатит» историю до коммита с хешем 
+`<hash>`. **Более поздние коммиты потеряются!**
+
+<details>
+<summary>Процесс «отката»</summary>
+
+![gitResetProc][gitResetProcImg]
+
+</details>
+
+### «Откатить» изменения, которые не попали ни в staging, ни в коммит, — `git restore <file>`
+
+Команда `git restore <file>` «откатит» файл до последней версии, которая была 
+сохранена через `git commit` или `git add`.
+
 _______________________________________________________________________________
 <h1 id="python-id">The Zen of Python</h1>
 
@@ -1806,6 +1836,7 @@ For flowing long blocks of **text** with fewer structural restrictions
 | Git                    |     `Alt` + `9`      |
 | Refresh                |    `Ctrl` + `F5`     |
 | Commit                 |     `Alt` + `0`      |
+| Terminal               |    `Alt` + `F12`     |
 
 [GitHubMCSRef]: https://gist.github.com/fomvasss/8dd8cd7f88c67a4e3727f9d39224a84c "GitHub"
 [MCSRef]: https://www.markdownguide.org/cheat-sheet/ "Markdown"
@@ -1820,3 +1851,4 @@ For flowing long blocks of **text** with fewer structural restrictions
 [gtfRef]: https://git-scm.com/docs/git-interpret-trailers
 [CCSpecRef]: https://www.conventionalcommits.org/en/v1.0.0/#specification
 [mermaidRef]: http://mermaid.js.org/
+[gitResetProcImg]: gitResetProc.png
