@@ -1884,7 +1884,7 @@ Git будет игнорировать файлы с именем `.DS_Store`, 
 ### Templates
 
 - [Git Docs - Ignoring Files][GitDocsIgnorFileRef]
-- [GitHub Docs - Ignoring Files] [GitHubDocsIgnorFileRef]
+- [GitHub Docs - Ignoring Files][GitHubDocsIgnorFileRef]
 - [Git Docs - `.gitignore`][GitDocsGitIgnorRef]
 - [GitHub `.gitignore` Templates][GitHubGitIgnorTemplRef]
 - [Some Common `.gitignore` Configurations][CommonGitIgnoreRef]
