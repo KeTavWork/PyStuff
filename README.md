@@ -1780,6 +1780,11 @@ a31fa24 Добавить главную страницу и стили
 Команда `git restore <file>` «откатит» файл до последней версии, которая была 
 сохранена через `git commit` или `git add`.
 
+### Перестать отслеживать файл
+
+`git rm --cached <название файла>` - ключ --`cached` удаляет указанный файл 
+только из индекса, но не сам файл.
+
 <h2 id="git-diff-id">Изменения в файлах</h2>
 
 Команда `git diff` (от англ. _difference_ — «отличие», «разница») сравнит 
@@ -1876,6 +1881,22 @@ Git будет игнорировать файлы с именем `.DS_Store`, 
 это можно сделать с помощью ключа `--ignored`: `git status --ignored`. В таком 
 случае в выводе `git status` появится раздел `Ignored files`.
 
+### Templates
+
+- [Git Docs - Ignoring Files][GitDocsIgnorFileRef]
+- [GitHub Docs - Ignoring Files] [GitHubDocsIgnorFileRef]
+- [Git Docs - `.gitignore`][GitDocsGitIgnorRef]
+- [GitHub `.gitignore` Templates][GitHubGitIgnorTemplRef]
+- [Some Common `.gitignore` Configurations][CommonGitIgnoreRef]
+- [gitignore.io - `.gitignore` Generator][GitignoreIoRef]
+- Plugin: `.ignore` - `.gitignore` Generator For JetBrains
+
+> If you want to ignore a file that is already checked in, you must untrack 
+> the file before you add a rule to ignore it. From your terminal, untrack 
+> the file.
+> 
+> `git rm --cached FILENAME`
+
 _______________________________________________________________________________
 <h1 id="python-id">The Zen of Python</h1>
 
@@ -1962,3 +1983,9 @@ For flowing long blocks of **text** with fewer structural restrictions
 [CCSpecRef]: https://www.conventionalcommits.org/en/v1.0.0/#specification
 [mermaidRef]: http://mermaid.js.org/
 [gitResetProcImg]: images/gitResetProc.png
+[GitDocsIgnorFileRef]: https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository#_ignoring "Git"
+[GitHubDocsIgnorFileRef]: https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files "GitHub"
+[GitDocsGitIgnorRef]: https://git-scm.com/docs/gitignore "Git"
+[GitHubGitIgnorTemplRef]: https://github.com/github/gitignore "GitHub"
+[CommonGitIgnoreRef]: https://gist.github.com/octocat/9257657 "GitHub Gist"
+[GitignoreIoRef]: https://www.toptal.com/developers/gitignore "Toptal"
